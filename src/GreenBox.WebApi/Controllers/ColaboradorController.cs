@@ -20,14 +20,13 @@ namespace GreenBox.WebApi.Controllers
             _colaboradorRepository = colaboradorRepository;
             _colaboradorService = colaboradorService;
         }
-
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ColaboradorViewModel>>> ObterTodos()
+        public async Task<ActionResult<IEnumerable<ColaboradorViewModel>>> ObterRanking()
         {
-            return CustomResponse(_mapper.Map<IEnumerable<ColaboradorViewModel>>(await _colaboradorRepository.ObterTodos()));
+            return CustomResponse(_mapper.Map<IEnumerable<ColaboradorViewModel>>(await _colaboradorRepository.ObterRanking()));
         }
 
-        [HttpGet("id:{guid}")]
+        [HttpGet("{id:guid}")]
         public async Task<ActionResult<ColaboradorViewModel>> ObterPorId(Guid id)
         {
             var colaborador = await _colaboradorRepository.ObterPorId(id);
@@ -38,6 +37,14 @@ namespace GreenBox.WebApi.Controllers
 
             return CustomResponse(_mapper.Map<ColaboradorViewModel>(colaborador));
         }
+
+        [HttpGet("todos")]
+        public async Task<ActionResult<IEnumerable<ColaboradorViewModel>>> ObterTodos()
+        {
+            var colaboradoes = await _colaboradorRepository.ObterTodos();
+            return CustomResponse(_mapper.Map<IEnumerable<ColaboradorViewModel>>(colaboradoes));
+        }
+
         [HttpPost]
         public async Task<ActionResult<ColaboradorViewModel>> Adicionar(ColaboradorViewModel colaboradorViewModel)
         {
@@ -49,7 +56,7 @@ namespace GreenBox.WebApi.Controllers
             return CustomResponse(colaboradorViewModel);
         }
 
-        [HttpPut]
+        [HttpPut("{id:guid}")]
         public async Task<ActionResult<ColaboradorViewModel>> Atualizar(Guid id, ColaboradorViewModel colaboradorViewModel)
         {
             if (id != colaboradorViewModel.Id)
@@ -78,7 +85,5 @@ namespace GreenBox.WebApi.Controllers
 
             return CustomResponse(colaborador);
         }
-
-
     }
 }

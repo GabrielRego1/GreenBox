@@ -13,5 +13,6 @@ namespace GreenBox.WebApi.ViewModels
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public decimal Pontuacao { get; set; }
+        public bool Ativo { get; set; }
     }
 }
