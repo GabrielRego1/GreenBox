@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 namespace GreenBox.WebApi.Controllers
 {
     [ApiController]
+    [Route("api/[controller]")]
     public abstract class MainController : ControllerBase
     {
         private readonly INotificador _notificador;
