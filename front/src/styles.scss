@@ -1,0 +1,30 @@
+@use '@angular/material'as mat;
+@include mat.core();
+$GreenBox-primary: mat.define-palette(mat.$teal-palette, 900);
+$GreenBox-accent: mat.define-palette(mat.$green-palette, 600, 400, 500);
+$GreenBox-warn: mat.define-palette(mat.$red-palette);
+$GreenBox-theme: mat.define-light-theme((color: (primary: $GreenBox-primary,
+      accent: $GreenBox-accent,
+      warn: $GreenBox-warn,
+    )));
+@include mat.all-component-themes($GreenBox-theme);
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+header {
+  height: 20vh;
+}
+
+.container {
+  min-height: 70vh;
+}
