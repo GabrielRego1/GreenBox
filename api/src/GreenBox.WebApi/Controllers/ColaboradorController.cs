@@ -41,8 +41,7 @@ namespace GreenBox.WebApi.Controllers
         [HttpGet("todos")]
         public async Task<ActionResult<IEnumerable<ColaboradorViewModel>>> ObterTodos()
         {
-            var colaboradoes = await _colaboradorRepository.ObterTodos();
-            return CustomResponse(_mapper.Map<IEnumerable<ColaboradorViewModel>>(colaboradoes));
+            return CustomResponse(_mapper.Map<IEnumerable<ColaboradorViewModel>>(await _colaboradorRepository.ObterTodos()));
         }
 
         [HttpPost]
@@ -72,7 +71,6 @@ namespace GreenBox.WebApi.Controllers
 
             return CustomResponse(colaboradorViewModel);
         }
-
         [HttpDelete("{id:guid}")]
         public async Task<ActionResult<ColaboradorViewModel>> Excluir(Guid id)
         {
