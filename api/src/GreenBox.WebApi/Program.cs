@@ -1,3 +1,4 @@
+using GreenBox.Api.Extensions;
 using GreenBox.Data.Contexts;
 using GreenBox.WebApi.Configurations;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,8 @@ app.UseCors();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.MapControllers();
 

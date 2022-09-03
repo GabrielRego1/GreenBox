@@ -14,18 +14,18 @@ namespace GreenBox.Business.Services
             _colaboradorRepository = colaboradorRepository;
         }
 
-        public async Task Adicionar(Colaborador Colaborador)
+        public async Task Adicionar(Colaborador colaborador)
         {
-            if (!ExecutarValidacao(new ColaboradorValidation(), Colaborador)) return;
+            if (!ExecutarValidacao(new ColaboradorValidation(), colaborador)) return;
 
-            await _colaboradorRepository.Adicionar(Colaborador);
+            await _colaboradorRepository.Adicionar(colaborador);
         }
 
-        public async Task Atualizar(Colaborador Colaborador)
+        public async Task Atualizar(Colaborador colaborador)
         {
-            if (!ExecutarValidacao(new ColaboradorValidation(), Colaborador)) return;
+            if (!ExecutarValidacao(new ColaboradorValidation(), colaborador)) return;
 
-            await _colaboradorRepository.Atualizar(Colaborador);
+            await _colaboradorRepository.Atualizar(colaborador);
         }
 
         public async Task Remover(Guid id)

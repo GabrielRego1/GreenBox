@@ -45,6 +45,27 @@ namespace GreenBox.Data.Migrations
 
                     b.ToTable("Colaboradores");
                 });
+
+            modelBuilder.Entity("GreenBox.Business.Models.Log", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Mensagem")
+                        .IsRequired()
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<int>("Nivel")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Log");
+                });
 #pragma warning restore 612, 618
         }
     }
